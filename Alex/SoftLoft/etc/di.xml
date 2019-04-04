@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Alex\SoftLoft\Api\Data\SalesInformationInterface" type="Alex\SoftLoft\Model\SalesInformation"/>
+    <preference for="Alex\SoftLoft\Api\SalesInformationProviderInterface" type="Alex\SoftLoft\Model\SalesInformation\Provider"/>
+
+    <type name="Magento\Catalog\Api\ProductRepositoryInterface">
+        <plugin name="joinSalesInformationToProduct" type="Alex\SoftLoft\Model\Plugin\Product\Repository"/>
+    </type>
+
+    <type name="Alex\SoftLoft\Model\SalesInformation\Provider">
+        <arguments>
+            <argument name="orderStatusFilter" xsi:type="string">pending</argument>
+        </arguments>
+    </type>
+</config>
